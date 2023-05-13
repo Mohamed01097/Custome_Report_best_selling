@@ -1,0 +1,54 @@
+<!--<odoo>-->
+<!--  <data>-->
+<!--    &lt;!&ndash; explicit list view definition &ndash;&gt;-->
+
+<!--    <record model="ir.actions.act_window" id="chatgpt.action_window">-->
+<!--      <field name="name">chatgpt window</field>-->
+<!--      <field name="res_model">chatgpt.chatgpt</field>-->
+<!--      <field name="view_mode">tree,form</field>-->
+<!--    </record>-->
+
+<!--    <record model="ir.ui.view" id="chatgpt.list">-->
+<!--      <field name="name">chatgpt list</field>-->
+<!--      <field name="model">chatgpt.chatgpt</field>-->
+<!--      <field name="arch" type="xml">-->
+<!--        <tree>-->
+<!--          <field name="name"/>-->
+<!--        </tree>-->
+<!--      </field>-->
+<!--    </record>-->
+
+
+<!--    &lt;!&ndash; actions opening views on models &ndash;&gt;-->
+
+
+<!--    &lt;!&ndash; server action to the one above &ndash;&gt;-->
+
+<!--&lt;!&ndash;    <record model="ir.actions.server" id="chatgpt.action_server">&ndash;&gt;-->
+<!--&lt;!&ndash;      <field name="name">chatgpt server</field>&ndash;&gt;-->
+<!--&lt;!&ndash;      <field name="model_id" ref="model_chatgpt_chatgpt"/>&ndash;&gt;-->
+<!--&lt;!&ndash;      <field name="state">code</field>&ndash;&gt;-->
+<!--&lt;!&ndash;      <field name="code">&ndash;&gt;-->
+<!--&lt;!&ndash;        action = {&ndash;&gt;-->
+<!--&lt;!&ndash;          "type": "ir.actions.act_window",&ndash;&gt;-->
+<!--&lt;!&ndash;          "view_mode": "tree,form",&ndash;&gt;-->
+<!--&lt;!&ndash;          "res_model": model._name,&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;      </field>&ndash;&gt;-->
+<!--&lt;!&ndash;    </record>&ndash;&gt;-->
+
+<!--    &lt;!&ndash; Top menu item &ndash;&gt;-->
+
+<!--    <menuitem name="chatgpt" id="chatgpt.menu_root"/>-->
+
+<!--    <menuitem name="Menu 1" id="chatgpt.menu_1" parent="chatgpt.menu_root"/>-->
+<!--    &lt;!&ndash; actions &ndash;&gt;-->
+
+<!--    <menuitem name="List" id="chatgpt.menu_1_list" parent="chatgpt.menu_1"-->
+<!--              action="chatgpt.action_window"/>-->
+
+<!--&lt;!&ndash;    <menuitem name="Server to list" id="chatgpt" parent="chatgpt.menu_2"&ndash;&gt;-->
+<!--&lt;!&ndash;              action="chatgpt.action_server"/>&ndash;&gt;-->
+<!--&lt;!&ndash;&ndash;&gt;&ndash;&gt;-->
+<!--  </data>-->
+<!--</odoo>-->

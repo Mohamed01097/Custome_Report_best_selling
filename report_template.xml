@@ -1,0 +1,169 @@
+<odoo>
+    <data>
+
+        <record id="report_chatgpt_product" model="ir.actions.report">
+            <field name="name">Best Selling</field>
+            <field name="model">product.sales.report</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">chatgpt.products_report_template</field>
+            <field name="report_file">chatgpt.products_report_template</field>
+            <field name="binding_model_id" ref="model_product_sales_report"/>
+            <field name="binding_type">report</field>
+        </record>
+        <template id="products_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page" style="margin-top:100px;">
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <table class="table table-condensed"
+                                       style="border: 3px solid black !important; height:300px; margin-top:-20px;"
+                                       width="100%">
+                                    <tr>
+                                        <td width="40%" style="padding-right: 10px;">
+                                            <p>
+                                                <img t-if="not o.image_1920"
+                                                     t-att-src="'/web/static/src/img/my_photo.jpeg'" height="280"
+                                                     border="1" width="260"/>
+                                                <img t-if="o.image_1920"
+                                                     t-att-src="'data:image/png;base64,%s' % to_text(o.image_1920)"
+                                                     height="280" border="1" width="260"/>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td style="padding:20px;">
+                                                        <span>
+                                                            <strong>Name:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.name"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding:20px;">
+                                                        <span>
+                                                            <strong>Age:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.age"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding:20px;">
+                                                        <span>
+                                                            <strong>Job Title:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.job_title"></span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td style="padding:20px;">
+                                                        <span>
+                                                            <strong>Experience:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.experience"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding:20px;">
+                                                        <span>
+                                                            <strong>Phone:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.phone"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding:20px;">
+                                                        <span>
+                                                            <strong>Email:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.email"></span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 style="text-align: center;">Best Selling Products</h2>
+                    <div>
+                        <table style="width: 100%; text-align: center; padding-bottom:100px;"
+                               class="table table-dark">
+                            <thead>
+                                <tr>
+                                    <th style="padding: 10px;">Product Code</th>
+                                    <th style="padding: 10px;">Product Name</th>
+                                    <th style="padding: 10px;">Product Quantity</th>
+                                    <th style="padding: 10px;">Revenue</th>
+                                    <th style="padding: 10px;">Order Date</th>
+                                    <th style="padding: 10px;">Category</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.get_best_selling_products(o.date_start, o.date_end)" t-as="product">
+                                    <tr>
+                                        <td style="padding: 10px;">
+                                            <t t-esc="product.get('code')"/>
+                                        </td>
+                                        <td style="padding: 10px;">
+                                            <t t-esc="product.get('name')"/>
+                                        </td>
+                                        <td style="padding: 10px;">
+                                            <t t-esc="product.get('quantity')"/>
+                                        </td>
+                                        <td style="padding: 10px;">
+                                            <t t-esc="product.get('revenue')"/>
+                                        </td>
+                                        <td style="padding: 10px;">
+                                            <t t-esc="product.get('date_order')"/>
+                                        </td>
+                                        <td style="padding: 10px;">
+                                            <t t-esc="product.get('category')"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
